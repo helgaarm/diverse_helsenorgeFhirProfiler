@@ -1,0 +1,42 @@
+name: Build IG Website
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-ig:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+
+      - name: Install Jekyll
+        run: gem install jekyll bundler
+
+      - name: Build IG website
+        shell: pwsh
+        run: .\scripts\build-ig.ps1
+
+      - name: Upload IG output
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ig-output
+          path: output
+          if-no-files-found: ignore
+

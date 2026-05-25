@@ -6,7 +6,7 @@ This guide describes how to create and work with this FHIR IG project scaffold.
 
 Use FSH as the source of truth, generate FHIR JSON with SUSHI, validate generated resources with Firely Terminal, review changes in GitHub Pull Requests, and let Simplifier import only generated JSON from the reviewed `main` branch.
 
-Local IG website generation is deferred for now. The normal build flow generates JSON with SUSHI and validates it with Firely Terminal.
+The normal build flow generates JSON with SUSHI and validates it with Firely Terminal. IG website generation is available as a manual GitHub Actions workflow.
 
 ## Prerequisites
 
@@ -128,6 +128,7 @@ scripts/ci.ps1
 .github/workflows/sushi-generation.yml
 .github/workflows/firely-validation.yml
 .github/workflows/pull-request-validation.yml
+.github/workflows/build-ig-website.yml
 ```
 
 For an existing IG converted with GoFSH, copy the GoFSH output folders into:
@@ -196,6 +197,14 @@ Run local CI checks:
 ```powershell
 .\scripts\ci.ps1
 ```
+
+Build the IG website in GitHub Actions manually:
+
+1. Open the repository on GitHub.
+2. Go to `Actions`.
+3. Select `Build IG Website`.
+4. Click `Run workflow`.
+5. Download the `ig-output` artifact when the workflow completes.
 
 ## Daily Development Flow
 
@@ -346,6 +355,7 @@ Use workflows for:
 - generated JSON freshness check
 - Firely validation
 - Pull Request validation
+- optional manual IG website build
 
 The PR validation should fail if generated JSON is not committed.
 
