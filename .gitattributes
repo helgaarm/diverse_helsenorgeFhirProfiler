@@ -1,0 +1,8 @@
+# Keep generated FHIR JSON stable across Windows and GitHub Actions.
+*.json text eol=lf
+*.fsh text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.md text eol=lf
+*.ps1 text eol=lf
+

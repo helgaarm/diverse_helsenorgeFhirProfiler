@@ -81,17 +81,13 @@ Validate generated JSON with Firely Terminal:
 .\scripts\validate-firely.ps1
 ```
 
-Generate the IG website:
-
-```powershell
-.\scripts\build-ig.ps1
-```
-
 Run the local CI sequence:
 
 ```powershell
 .\scripts\ci.ps1
 ```
+
+IG website generation is not part of the required PR validation. Use the manual GitHub Actions workflow `Build IG Website` when a website artifact is needed. The current delivery flow is SUSHI JSON generation plus Firely validation, with Simplifier importing generated JSON from GitHub.
 
 ## Pull Request Flow
 

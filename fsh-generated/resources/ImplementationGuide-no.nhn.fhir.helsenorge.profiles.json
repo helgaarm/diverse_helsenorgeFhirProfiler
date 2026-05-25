@@ -42,12 +42,6 @@
       "version": "7.1.0",
       "uri": "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
       "id": "hl7_terminology_r4"
-    },
-    {
-      "packageId": "hl7.fhir.r4.core",
-      "version": "4.0.1",
-      "uri": "http://hl7.org/fhir",
-      "id": "hl7_fhir_r4_core"
     }
   ],
   "definition": {

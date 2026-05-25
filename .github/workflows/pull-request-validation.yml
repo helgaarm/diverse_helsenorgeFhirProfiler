@@ -32,6 +32,8 @@ jobs:
         run: |
           $changes = git status --short fsh-generated/resources
           if ($changes) {
+            Write-Host "Changed generated files:"
+            Write-Host $changes
             Write-Error "Generated JSON is not up to date. Run .\scripts\build-sushi.ps1 and commit fsh-generated/resources."
           }
 
@@ -46,4 +48,3 @@ jobs:
       - name: Validate generated resources
         shell: pwsh
         run: .\scripts\validate-firely.ps1
-
