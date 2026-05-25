@@ -1,0 +1,1 @@
+Alias: $hn-appointment-status-vs = http://helsenorge.no/fhir/ValueSet/hn-appointment-status-vs

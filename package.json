@@ -1,0 +1,23 @@
+{
+  "name": "helsenorge-profiler-ig",
+  "version": "0.1.0",
+  "private": true,
+  "description": "FHIR R4 Implementation Guide source using FSH, SUSHI, Firely Terminal, GitHub, and Simplifier.",
+  "scripts": {
+    "sushi": "sushi .",
+    "build": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-sushi.ps1",
+    "watch": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/watch-sushi.ps1",
+    "validate": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/validate-firely.ps1",
+    "ig": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-ig.ps1",
+    "ci": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/ci.ps1"
+  },
+  "devDependencies": {
+    "fsh-sushi": "^3.16.5"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "fhirVersions": [
+    "4.0.1"
+  ]
+}

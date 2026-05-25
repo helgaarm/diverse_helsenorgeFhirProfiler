@@ -1,0 +1,48 @@
+# Source: project metadata used by SUSHI and IG Publisher.
+# FSH source files live under input/fsh.
+# Generated JSON is written by SUSHI to fsh-generated/resources and is committed.
+id: no.nhn.fhir.helsenorge.profiles
+canonical: https://fhir.nhn.no/ig/helsenorge/profiles
+name: HelsenorgeProfiles
+title: Helsenorge FHIR Profiles
+description: FHIR R4 implementation guide for Helsenorge profiles, extensions, terminology, and examples.
+status: draft
+version: 0.1.0
+fhirVersion: 4.0.1
+copyrightYear: 2026+
+releaseLabel: ci-build
+license: CC0-1.0
+
+publisher:
+  name: Norsk helsenett
+  url: https://www.nhn.no
+
+dependencies:
+  hl7.fhir.uv.extensions.r4: 5.2.0
+  hl7.fhir.no.basis: 2.2.2
+  hl7.terminology.r4: 7.1.0
+  hl7.fhir.r4.core: 4.0.1
+    
+
+parameters:
+  excludettl: true
+  excludexml: true
+  path-resource:
+    - fsh-generated/resources
+
+pages:
+  index.md:
+    title: Home
+  profiles.md:
+    title: Profiles
+  terminology.md:
+    title: Terminology
+  examples.md:
+    title: Examples
+
+menu:
+  Home: index.html
+  Profiles: profiles.html
+  Terminology: terminology.html
+  Examples: examples.html
+  Artifacts: artifacts.html

@@ -1,0 +1,49 @@
+name: Pull Request Validation
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-pr:
+    runs-on: windows-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate resources
+        shell: pwsh
+        run: .\scripts\build-sushi.ps1
+
+      - name: Verify generated JSON is committed
+        shell: pwsh
+        run: |
+          $changes = git status --short fsh-generated/resources
+          if ($changes) {
+            Write-Error "Generated JSON is not up to date. Run .\scripts\build-sushi.ps1 and commit fsh-generated/resources."
+          }
+
+      - name: Install Firely Terminal
+        shell: pwsh
+        run: dotnet tool install --global Firely.Terminal
+
+      - name: Add dotnet tools to PATH
+        shell: pwsh
+        run: echo "$env:USERPROFILE\.dotnet\tools" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      - name: Validate generated resources
+        shell: pwsh
+        run: .\scripts\validate-firely.ps1
+

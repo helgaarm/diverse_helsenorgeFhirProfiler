@@ -1,0 +1,17 @@
+{
+  "package-id": "no.nhn.fhir.helsenorge.profiles",
+  "title": "Helsenorge FHIR Profiles",
+  "canonical": "https://fhir.nhn.no/ig/helsenorge/profiles",
+  "introduction": "FHIR R4 implementation guide for Helsenorge profiles, extensions, terminology, and examples.",
+  "list": [
+    {
+      "version": "current",
+      "desc": "Continuous integration build from the main branch.",
+      "path": "https://fhir.nhn.no/ig/helsenorge/profiles",
+      "status": "ci-build",
+      "current": true,
+      "fhirversion": "4.0.1"
+    }
+  ]
+}
+

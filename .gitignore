@@ -1,0 +1,32 @@
+# Local dependencies and caches
+node_modules/
+input-cache/
+.fhir/
+.firely/
+.firely-validation/
+
+# IG Publisher output
+output/
+temp/
+template/
+fsh-generated/data/
+fsh-generated/includes/
+fsh-generated/fsh-index.txt
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vs/
+.vscode/*.log
+
+# Keep generated FHIR JSON committed for Simplifier import.
+!fsh-generated/
+!fsh-generated/resources/
+!fsh-generated/resources/*.json
