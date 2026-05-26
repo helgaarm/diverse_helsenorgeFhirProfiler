@@ -77,10 +77,10 @@
           },
           {
             "key": "serviceCategory-7-location-exactly-one-of-ptres-of",
-            "human": "When serviceCategory is 7, contained Location must include either PTRES or OF, but not both.",
+            "human": "When serviceCategory is 7 and virtualService is not present, contained Location must include either PTRES or OF, but not both.",
             "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
             "severity": "error",
-            "expression": "serviceCategory.coding.where(code = '7').empty() or (contained.ofType(Location).where(type.coding.where(system = 'http://terminology.hl7.org/CodeSystem/v3-RoleCode' and code = 'PTRES').exists()).exists() != contained.ofType(Location).where(type.coding.where(system = 'http://terminology.hl7.org/CodeSystem/v3-RoleCode' and code = 'OF').exists()).exists())"
+            "expression": "serviceCategory.coding.where(code = '7').empty() or extension('http://helsenorge.no/fhir/StructureDefinition/hn-basis-virtual-service').exists() or (contained.ofType(Location).where(type.coding.where(system = 'http://terminology.hl7.org/CodeSystem/v3-RoleCode' and code = 'PTRES').exists()).exists() != contained.ofType(Location).where(type.coding.where(system = 'http://terminology.hl7.org/CodeSystem/v3-RoleCode' and code = 'OF').exists()).exists())"
           },
           {
             "key": "serviceCategory-7-contained-flag-rules",
@@ -529,6 +529,40 @@
             "code": "Reference",
             "targetProfile": [
               "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/kommunikasjonspart-Organization"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Appointment.supportingInformation:documentReference",
+        "path": "Appointment.supportingInformation",
+        "sliceName": "documentReference",
+        "short": "Document reference",
+        "definition": "DocumentReference resource with supporting documentation for the appointment.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.no/fhir/StructureDefinition/no-basis-DocumentReference"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Appointment.supportingInformation:flag",
+        "path": "Appointment.supportingInformation",
+        "sliceName": "flag",
+        "short": "Flag",
+        "definition": "Flag resource with supporting flag information for the appointment.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-Flag"
             ]
           }
         ]
