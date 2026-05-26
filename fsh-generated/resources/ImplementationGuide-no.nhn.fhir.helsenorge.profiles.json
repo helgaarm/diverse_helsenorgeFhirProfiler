@@ -2,7 +2,7 @@
   "resourceType": "ImplementationGuide",
   "id": "no.nhn.fhir.helsenorge.profiles",
   "url": "https://fhir.nhn.no/ig/helsenorge/profiles/ImplementationGuide/no.nhn.fhir.helsenorge.profiles",
-  "version": "0.1.0",
+  "version": "2.4.5-beta",
   "name": "HelsenorgeProfiles",
   "title": "Helsenorge FHIR Profiles",
   "status": "draft",
@@ -823,7 +823,7 @@
       },
       {
         "code": "releaselabel",
-        "value": "ci-build"
+        "value": "2.4.5-beta"
       },
       {
         "code": "excludettl",

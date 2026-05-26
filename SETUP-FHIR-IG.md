@@ -172,6 +172,53 @@ Put Node tooling dependencies in `package.json`:
 }
 ```
 
+## Configure Package Version
+
+The FHIR package version is controlled in `sushi-config.yaml`:
+
+```yaml
+version: 2.4.5-beta
+releaseLabel: 2.4.5-beta
+```
+
+When preparing a new Simplifier package, create a release branch and update the version before generating JSON:
+
+```powershell
+git checkout main
+git pull origin main
+git checkout -b release/2.4.5-beta
+```
+
+Then update:
+
+```text
+sushi-config.yaml
+package-list.json
+```
+
+Run:
+
+```powershell
+.\scripts\build-sushi.ps1
+.\scripts\validate-firely.ps1
+```
+
+Commit and push:
+
+```powershell
+git add sushi-config.yaml package-list.json fsh-generated/resources
+git commit -m "Prepare 2.4.5-beta package"
+git push -u origin release/2.4.5-beta
+```
+
+Open a Pull Request:
+
+```text
+release/2.4.5-beta -> main
+```
+
+After review and successful validation, merge to `main` and let Simplifier import/publish from `main`.
+
 ## Build Commands
 
 Generate JSON resources:

@@ -5,13 +5,12 @@
   "introduction": "FHIR R4 implementation guide for Helsenorge profiles, extensions, terminology, and examples.",
   "list": [
     {
-      "version": "current",
-      "desc": "Continuous integration build from the main branch.",
+      "version": "2.4.5-beta",
+      "desc": "Beta release package for Simplifier publishing.",
       "path": "https://fhir.nhn.no/ig/helsenorge/profiles",
-      "status": "ci-build",
+      "status": "beta",
       "current": true,
       "fhirversion": "4.0.1"
     }
   ]
 }
-

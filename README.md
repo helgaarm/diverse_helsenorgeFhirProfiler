@@ -99,6 +99,23 @@ IG website generation is not part of the required PR validation. Use the manual 
 6. Merge only after review and validation pass.
 7. Simplifier imports generated JSON from the `main` branch.
 
+## Versioning
+
+The package version is controlled in `sushi-config.yaml`:
+
+```yaml
+version: 2.4.5-beta
+releaseLabel: 2.4.5-beta
+```
+
+Update this when preparing a new Simplifier package version. The matching package publication metadata is in `package-list.json`.
+
+Recommended release branch naming:
+
+```text
+release/2.4.5-beta
+```
+
 ## Simplifier Setup
 
 Configure Simplifier package publishing/import from GitHub using:
