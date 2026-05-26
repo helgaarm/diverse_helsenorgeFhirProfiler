@@ -5,7 +5,7 @@ Title: "hn-basis-appointment"
 Description: "Base profile for Helsenorge Appointment information. Defined by Helsenorge based on national profile."
 * ^version = "2.5.3"
 * ^status = #draft
-* obeys cancelationReason-inv and contained-location-must-have-managingorganization and hn-app-primary-2 and hn-app-primary-3 and hn-app-reqperiod-1 and hn-app-primary-4 and hn-app-primary-5 and serviceCategory-location-type and serviceCategory-7-location-exactly-one-of-ptres-of and serviceCategory-7-contained-flag-rules and serviceCategory-7-no-varsling-or-paminnelse and hn-app-kommunikasjonspart-or-herid and virtualservice-or-location-required
+* obeys cancelationReason-inv and contained-location-must-have-managingorganization and hn-app-primary-2 and hn-app-primary-3 and hn-app-reqperiod-1 and hn-app-primary-4 and hn-app-primary-5 and serviceCategory-location-type and serviceCategory-7-location-requires-ptres-or-of and serviceCategory-7-location-not-both-ptres-and-of and serviceCategory-7-contained-flag-rules and contained-flag-allowed-codes and serviceCategory-7-no-varsling-or-paminnelse and hn-app-kommunikasjonspart-or-herid and virtualservice-or-location-required and hn-app-proposed-only-servicecategory-7
 * meta ^short = "Metadata used for Appointment in Helsenorge"
 * meta ^definition = "Appointment-specific use of generic Helsenorge FHIR metadata. See generic description of metadata mechanisms: <https://helsenorge.atlassian.net/wiki/spaces/HELSENORGE/pages/743014401/Meta+informasjon+som+kan+benyttes+for+alle+FHIR+ressurser>. This profile constrains selected metadata elements relevant for Appointment, including conditional access restriction, notification handling, and reminder handling."
 * meta.lastUpdated 1.. MS
@@ -83,8 +83,8 @@ Description: "Base profile for Helsenorge Appointment information. Defined by He
 * supportingInformation ^min = 0
 * supportingInformation contains
     kommunikasjonspart 0..1 and
-    documentReference 0..* and
-    flag 0..*
+    documentReference 0..1 and
+    flag 0..4
 * supportingInformation[kommunikasjonspart] only Reference(KommunikasjonspartOrganization)
 * supportingInformation[kommunikasjonspart] ^short = "Kommunikasjonspart"
 * supportingInformation[kommunikasjonspart] ^definition = "Kommunikasjonspart organization used to transfer HER-id level 2 for the communication partner when serviceCategory is not 7."
@@ -103,4 +103,4 @@ Description: "Base profile for Helsenorge Appointment information. Defined by He
 * participant.actor only Reference(NoBasisPatient or NoBasisPractitioner or NoBasisLocation or NoBasisPractitionerRole)
 * participant.actor ^short = "When actor is a Patient logical reference MUST be used"
 * participant.actor ^definition = "When actor is a Patient only logical reference MUST be used. In all other cases Logical, Literal reference, Relative, internal or absolute URL can be used"
-* requestedPeriod ..0
+* requestedPeriod ..1

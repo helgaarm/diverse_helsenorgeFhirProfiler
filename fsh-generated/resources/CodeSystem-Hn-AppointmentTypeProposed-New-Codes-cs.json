@@ -6,7 +6,7 @@
   "id": "Hn-AppointmentTypeProposed-New-Codes-cs",
   "title": "Default codes for appointmentType.",
   "description": "New codes that should be used as default for appointmentType.",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/CodeSystem/Hn-AppointmentTypeProposed-New-Codes-cs",
+  "url": "http://helsenorge.no/fhir/CodeSystem/Hn-AppointmentTypeProposed-New-Codes-cs",
   "concept": [
     {
       "code": "Poliklinisktime",

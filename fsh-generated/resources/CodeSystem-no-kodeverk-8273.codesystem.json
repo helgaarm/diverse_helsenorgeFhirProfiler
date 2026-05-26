@@ -6,7 +6,7 @@
   "id": "no-kodeverk-8273.codesystem",
   "title": "8273 Hastegrad",
   "description": "Anbefalt tidsperspektiv for tiltak.",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/CodeSystem/no-kodeverk-8273.codesystem",
+  "url": "http://helsenorge.no/fhir/CodeSystem/no-kodeverk-8273.codesystem",
   "concept": [
     {
       "code": "S",

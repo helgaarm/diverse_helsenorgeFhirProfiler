@@ -6,7 +6,7 @@
   "id": "no-kodeverk-9033.codesystem",
   "title": "9033 Slektskap mv. til pasient",
   "description": "Dette kodeverket inneholder koder som benyttes for å angi hvilket slektskap eller annet forhold , det er mellom pasienten og den pårørende.",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/CodeSystem/no-kodeverk-9033.codesystem",
+  "url": "http://helsenorge.no/fhir/CodeSystem/no-kodeverk-9033.codesystem",
   "concept": [
     {
       "code": "MO",

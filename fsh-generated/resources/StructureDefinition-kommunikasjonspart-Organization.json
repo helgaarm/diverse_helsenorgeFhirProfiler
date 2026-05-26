@@ -1,7 +1,7 @@
 {
   "resourceType": "StructureDefinition",
   "id": "kommunikasjonspart-Organization",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/kommunikasjonspart-Organization",
+  "url": "http://helsenorge.no/fhir/StructureDefinition/kommunikasjonspart-Organization",
   "version": "1.0.1",
   "name": "KommunikasjonspartOrganization",
   "title": "kommunikasjonspart-Organization",
@@ -53,7 +53,7 @@
           {
             "code": "Extension",
             "profile": [
-              "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/tba-organizationcoverage"
+              "http://helsenorge.no/fhir/StructureDefinition/tba-organizationcoverage"
             ]
           }
         ]

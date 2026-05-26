@@ -5,7 +5,7 @@
   "id": "hn-scheduleandslot-type-vs",
   "title": "hn-scheduleandslot-type-vs",
   "description": "Value set for schedule and slot type",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/ValueSet/hn-scheduleandslot-type-vs",
+  "url": "http://helsenorge.no/fhir/ValueSet/hn-scheduleandslot-type-vs",
   "version": "1.3.2",
   "experimental": true,
   "date": "2025-10-20T23:59:35+02:00",
@@ -44,7 +44,7 @@
         ]
       },
       {
-        "system": "https://fhir.nhn.no/ig/helsenorge/profiles/CodeSystem/hn-scheduleAndSlot-type-cs"
+        "system": "http://helsenorge.no/fhir/CodeSystem/hn-scheduleAndSlot-type-cs"
       }
     ]
   }

@@ -6,7 +6,7 @@
   "id": "hn-scheduleAndSlot-type-cs",
   "title": "Codes that should be used for schedule and SlotType.",
   "description": "Codes that should be used for schedule and SlotType.",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/CodeSystem/hn-scheduleAndSlot-type-cs",
+  "url": "http://helsenorge.no/fhir/CodeSystem/hn-scheduleAndSlot-type-cs",
   "concept": [
     {
       "code": "Poliklinisktime",

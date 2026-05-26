@@ -5,7 +5,7 @@
   "id": "hn-paminnelse-vs",
   "title": "Helsenorge påminnelse metatag value set",
   "description": "Allowed codes for the Helsenorge paminnelse metatag.",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/ValueSet/hn-paminnelse-vs",
+  "url": "http://helsenorge.no/fhir/ValueSet/hn-paminnelse-vs",
   "version": "1.0.0",
   "compose": {
     "include": [

@@ -1,8 +1,8 @@
 {
   "resourceType": "ImplementationGuide",
   "id": "no.nhn.fhir.helsenorge.profiles",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/ImplementationGuide/no.nhn.fhir.helsenorge.profiles",
-  "version": "2.4.5-beta",
+  "url": "http://helsenorge.no/fhir/ImplementationGuide/no.nhn.fhir.helsenorge.profiles",
+  "version": "2.4.6-beta",
   "name": "HelsenorgeProfiles",
   "title": "Helsenorge FHIR Profiles",
   "status": "draft",
@@ -424,6 +424,13 @@
       },
       {
         "reference": {
+          "reference": "Slot/123e4567-e89b-12d3-a456-426614174000"
+        },
+        "name": "example-slot-1",
+        "exampleCanonical": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-slot"
+      },
+      {
+        "reference": {
           "reference": "ValueSet/hn-appointment-status-vs"
         },
         "name": "Helsenorge Appointment Status Value Set",
@@ -823,7 +830,7 @@
       },
       {
         "code": "releaselabel",
-        "value": "2.4.5-beta"
+        "value": "2.4.6-beta"
       },
       {
         "code": "excludettl",
@@ -832,10 +839,6 @@
       {
         "code": "excludexml",
         "value": "true"
-      },
-      {
-        "code": "path-resource",
-        "value": "fsh-generated/resources"
       }
     ]
   }

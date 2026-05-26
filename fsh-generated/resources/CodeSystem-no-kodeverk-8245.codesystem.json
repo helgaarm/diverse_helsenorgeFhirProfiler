@@ -6,7 +6,7 @@
   "id": "no-kodeverk-8245.codesystem",
   "title": "8245 Status for resultat i svarrapportering av medisinske tjenester",
   "description": "Benyttes for å angi status/steg i arbeidsflyt for en enkelt lab- /røntgenundersøkelse.",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/CodeSystem/no-kodeverk-8245.codesystem",
+  "url": "http://helsenorge.no/fhir/CodeSystem/no-kodeverk-8245.codesystem",
   "concept": [
     {
       "code": "1",

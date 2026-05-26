@@ -6,7 +6,7 @@
   "id": "no-kodeverk-8243.codesystem",
   "title": "8243 Type tekstsvar i tekstlig resultat i svarrapportering av medisinske tjenester",
   "description": "Type tekstsvar i tekstlig resultat i svarrapportering av medisinske tjenester",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/CodeSystem/no-kodeverk-8243.codesystem",
+  "url": "http://helsenorge.no/fhir/CodeSystem/no-kodeverk-8243.codesystem",
   "concept": [
     {
       "code": "AN",

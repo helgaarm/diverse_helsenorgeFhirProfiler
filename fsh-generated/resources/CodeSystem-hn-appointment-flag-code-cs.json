@@ -6,7 +6,7 @@
   "id": "hn-appointment-flag-code-cs",
   "title": "hn-appointment-flag-code-cs",
   "description": "Code system used for Flag codes in nytimeløsing",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/CodeSystem/hn-appointment-flag-code-cs",
+  "url": "http://helsenorge.no/fhir/CodeSystem/hn-appointment-flag-code-cs",
   "concept": [
     {
       "code": "cancel",

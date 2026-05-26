@@ -6,7 +6,7 @@
   "id": "hn-kodeverk-varsling.codesystem",
   "title": "Varsling",
   "description": "Angir om innbygger skal varsles når en ekstern aktør lagrer eller endrer en ressurs på Helsenorge. I tillegg hvordan avsender organisasjonen skal framstå (navn) i SMS- og e-post varsler til innbygger.",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/CodeSystem/hn-kodeverk-varsling.codesystem",
+  "url": "http://helsenorge.no/fhir/CodeSystem/hn-kodeverk-varsling.codesystem",
   "concept": [
     {
       "code": "1",

@@ -1,7 +1,7 @@
 {
   "resourceType": "StructureDefinition",
   "id": "hn-basis-appointment",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+  "url": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
   "version": "2.5.3",
   "name": "HnBasisAppointment",
   "title": "hn-basis-appointment",
@@ -21,94 +21,115 @@
         "constraint": [
           {
             "key": "cancelationReason-inv",
-            "human": "Cancelation reason MUST be set when status=cancelled",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "human": "Cancelation reason MUST be set when status=cancelled and the appointment is not partOf another appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
-            "expression": "(status = 'cancelled') implies cancelationReason.exists()"
+            "expression": "(status = 'cancelled' and partOf.empty()) implies cancelationReason.exists()"
           },
           {
             "key": "contained-location-must-have-managingorganization",
             "human": "Contained Location must have managingOrganization when serviceCategory is 27 or 30",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "serviceCategory.coding.where(code = '27' or code = '30').empty() or      contained.ofType(Location).all(managingOrganization.exists())"
           },
           {
             "key": "hn-app-primary-2",
             "human": "If serviceCategory is 7, basedOn must not be used",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "serviceCategory.coding.where(code = '7').empty() or basedOn.empty()"
           },
           {
             "key": "hn-app-primary-3",
             "human": "start is required unless status is proposed",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "status = 'proposed' or start.exists()"
           },
           {
             "key": "hn-app-reqperiod-1",
             "human": "If status is proposed, requestedPeriod must exist and each requestedPeriod must have both start and end",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "status != 'proposed' or (requestedPeriod.exists() and requestedPeriod.all(start.exists() and end.exists()))"
           },
           {
             "key": "hn-app-primary-4",
             "human": "If serviceCategory is 7, partOf must not be used",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "serviceCategory.coding.where(code = '7').empty() or partOf.empty()"
           },
           {
             "key": "hn-app-primary-5",
             "human": "postponementReason cannot be used when serviceCategory is 7",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "serviceCategory.coding.where(code = '7').empty() or postponementReason.empty()"
           },
           {
             "key": "serviceCategory-location-type",
             "human": "If serviceCategory is 7 and virtualService is not present, all contained Location resources must have type PTRES or OF. If serviceCategory is 27 or 30, all contained Location resources must have type HU or HOSP, and at least one of each must be present.",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "(serviceCategory.coding.where(code='7').empty() or extension('http://helsenorge.no/fhir/StructureDefinition/hn-basis-virtual-service').exists() or contained.ofType(Location).all(type.coding.where(system='http://terminology.hl7.org/CodeSystem/v3-RoleCode' and (code='PTRES' or code='OF')).exists())) and (serviceCategory.coding.where(code='27' or code='30').empty() or (contained.ofType(Location).all(type.coding.where(system='http://terminology.hl7.org/CodeSystem/v3-RoleCode' and (code='HU' or code='HOSP')).exists()) and contained.ofType(Location).where(type.coding.where(system='http://terminology.hl7.org/CodeSystem/v3-RoleCode' and code='HU').exists()).exists() and contained.ofType(Location).where(type.coding.where(system='http://terminology.hl7.org/CodeSystem/v3-RoleCode' and code='HOSP').exists()).exists()))"
           },
           {
-            "key": "serviceCategory-7-location-exactly-one-of-ptres-of",
-            "human": "When serviceCategory is 7 and virtualService is not present, contained Location must include either PTRES or OF, but not both.",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "key": "serviceCategory-7-location-requires-ptres-or-of",
+            "human": "When serviceCategory is 7, the appointment is not partOf another appointment, and virtualService is not present, contained Location must include PTRES or OF.",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
-            "expression": "serviceCategory.coding.where(code = '7').empty() or extension('http://helsenorge.no/fhir/StructureDefinition/hn-basis-virtual-service').exists() or (contained.ofType(Location).where(type.coding.where(system = 'http://terminology.hl7.org/CodeSystem/v3-RoleCode' and code = 'PTRES').exists()).exists() != contained.ofType(Location).where(type.coding.where(system = 'http://terminology.hl7.org/CodeSystem/v3-RoleCode' and code = 'OF').exists()).exists())"
+            "expression": "serviceCategory.coding.where(code = '7').empty() or partOf.exists() or extension('http://helsenorge.no/fhir/StructureDefinition/hn-basis-virtual-service').exists() or contained.ofType(Location).where(type.coding.where(system = 'http://terminology.hl7.org/CodeSystem/v3-RoleCode' and (code = 'PTRES' or code = 'OF')).exists()).exists()"
+          },
+          {
+            "key": "serviceCategory-7-location-not-both-ptres-and-of",
+            "human": "When serviceCategory is 7, the appointment is not partOf another appointment, and virtualService is not present, contained Location must not include both PTRES and OF.",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
+            "severity": "error",
+            "expression": "serviceCategory.coding.where(code = '7').empty() or partOf.exists() or extension('http://helsenorge.no/fhir/StructureDefinition/hn-basis-virtual-service').exists() or (contained.ofType(Location).where(type.coding.where(system = 'http://terminology.hl7.org/CodeSystem/v3-RoleCode' and code = 'PTRES').exists()).exists() and contained.ofType(Location).where(type.coding.where(system = 'http://terminology.hl7.org/CodeSystem/v3-RoleCode' and code = 'OF').exists()).exists()).not()"
           },
           {
             "key": "serviceCategory-7-contained-flag-rules",
             "human": "When serviceCategory is 7, contained Flag resources must not use the codes canAcknowledge, canChangeAppointmentDialog, canHaveAppointmentDetails or canInitiateDialog.",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "serviceCategory.coding.where(code = '7').empty() or contained.ofType(Flag).all(code.coding.where(code in ('canAcknowledge' | 'canChangeAppointmentDialog' | 'canHaveAppointmentDetails' | 'canInitiateDialog')).empty())"
           },
           {
+            "key": "contained-flag-allowed-codes",
+            "human": "When contained Flag resources are used, only canAcknowledge, canChangeAppointmentDialog, canHaveAppointmentDetails and canInitiateDialog are allowed, and each code may only occur once.",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
+            "severity": "error",
+            "expression": "contained.ofType(Flag).code.coding.all(code in ('canAcknowledge' | 'canChangeAppointmentDialog' | 'canHaveAppointmentDetails' | 'canInitiateDialog')) and contained.ofType(Flag).code.coding.where(code = 'canAcknowledge').count() <= 1 and contained.ofType(Flag).code.coding.where(code = 'canChangeAppointmentDialog').count() <= 1 and contained.ofType(Flag).code.coding.where(code = 'canHaveAppointmentDetails').count() <= 1 and contained.ofType(Flag).code.coding.where(code = 'canInitiateDialog').count() <= 1"
+          },
+          {
             "key": "serviceCategory-7-no-varsling-or-paminnelse",
             "human": "When serviceCategory is 7, meta.tag varsling and paminnelse must not be used.",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "serviceCategory.coding.where(code = '7').empty() or meta.tag.where(system = 'http://helsenorge.no/fhir/varsling' or system = 'http://helsenorge.no/fhir/paminnelse').empty()"
           },
           {
             "key": "hn-app-kommunikasjonspart-or-herid",
             "human": "When serviceCategory is 7, Appointment SHALL reference exactly the HER-id level 2 organization via participant.actor, and that organization SHALL have partOf referencing a HER-id level 1 organization. Appointment SHALL NOT carry HER organizations in supportingInformation. Otherwise, Appointment SHALL reference at least one KommunikasjonspartOrganization with HER-id level 2 in supportingInformation.",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "((serviceCategory.coding.where(code = '7').exists()) implies (participant.actor.resolve().ofType(Organization).where(meta.profile = 'http://helsenorge.no/fhir/StructureDefinition/kommunikasjonspart-Organization' and identifier.where(system = 'urn:oid:2.16.578.1.12.4.1.2' and value.exists()).exists()).exists() and participant.actor.resolve().ofType(Organization).where(meta.profile = 'http://helsenorge.no/fhir/StructureDefinition/kommunikasjonspart-Organization').all(partOf.exists() and partOf.resolve().ofType(Organization).where(meta.profile = 'http://hl7.no/fhir/StructureDefinition/no-basis-Organization').exists()) and supportingInformation.resolve().ofType(Organization).where(meta.profile = 'http://hl7.no/fhir/StructureDefinition/no-basis-Organization' or meta.profile = 'http://helsenorge.no/fhir/StructureDefinition/kommunikasjonspart-Organization').empty())) and ((serviceCategory.coding.where(code = '7').empty()) implies (supportingInformation.resolve().ofType(Organization).where(meta.profile = 'http://helsenorge.no/fhir/StructureDefinition/kommunikasjonspart-Organization' and identifier.where(system = 'urn:oid:2.16.578.1.12.4.1.2' and value.exists()).exists()).exists()))"
           },
           {
             "key": "virtualservice-or-location-required",
             "human": "If virtualService extension is not present, at least one contained Location resource must be present.",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "extension('http://helsenorge.no/fhir/StructureDefinition/hn-basis-virtual-service').exists() or contained.ofType(Location).exists()"
+          },
+          {
+            "key": "hn-app-proposed-only-servicecategory-7",
+            "human": "status proposed is only allowed when serviceCategory is 7.",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
+            "severity": "error",
+            "expression": "status != 'proposed' or serviceCategory.coding.where(code = '7').exists()"
           }
         ]
       },
@@ -151,7 +172,7 @@
         "mustSupport": true,
         "binding": {
           "strength": "required",
-          "valueSet": "https://fhir.nhn.no/ig/helsenorge/profiles/ValueSet/hn-tilgangsbegrensning-vs"
+          "valueSet": "http://helsenorge.no/fhir/ValueSet/hn-tilgangsbegrensning-vs"
         }
       },
       {
@@ -189,7 +210,7 @@
         "mustSupport": true,
         "binding": {
           "strength": "required",
-          "valueSet": "https://fhir.nhn.no/ig/helsenorge/profiles/ValueSet/hn-varsling-vs"
+          "valueSet": "http://helsenorge.no/fhir/ValueSet/hn-varsling-vs"
         }
       },
       {
@@ -202,7 +223,7 @@
           {
             "code": "Extension",
             "profile": [
-              "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-extension-varselorganisasjon"
+              "http://helsenorge.no/fhir/StructureDefinition/hn-extension-varselorganisasjon"
             ]
           }
         ]
@@ -229,7 +250,7 @@
         "mustSupport": true,
         "binding": {
           "strength": "required",
-          "valueSet": "https://fhir.nhn.no/ig/helsenorge/profiles/ValueSet/hn-paminnelse-vs"
+          "valueSet": "http://helsenorge.no/fhir/ValueSet/hn-paminnelse-vs"
         }
       },
       {
@@ -273,7 +294,7 @@
         "path": "Appointment.extension.extension.value[x]",
         "binding": {
           "strength": "required",
-          "valueSet": "https://fhir.nhn.no/ig/helsenorge/profiles/ValueSet/hn-basis-virtual-service-type.valueset"
+          "valueSet": "http://helsenorge.no/fhir/ValueSet/hn-basis-virtual-service-type.valueset"
         }
       },
       {
@@ -286,7 +307,7 @@
           {
             "code": "Extension",
             "profile": [
-              "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-Recurring"
+              "http://helsenorge.no/fhir/StructureDefinition/hn-basis-Recurring"
             ]
           }
         ],
@@ -302,7 +323,7 @@
           {
             "code": "Extension",
             "profile": [
-              "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-postponementreason"
+              "http://helsenorge.no/fhir/StructureDefinition/hn-basis-postponementreason"
             ]
           }
         ]
@@ -317,7 +338,7 @@
           {
             "code": "Extension",
             "profile": [
-              "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-consultationType"
+              "http://helsenorge.no/fhir/StructureDefinition/hn-basis-consultationType"
             ]
           }
         ],
@@ -368,7 +389,7 @@
         "definition": "Volven 8445 is a preferred code system but other code systems as Volven 9179 can also be used",
         "binding": {
           "strength": "required",
-          "valueSet": "https://fhir.nhn.no/ig/helsenorge/profiles/ValueSet/hn-cancellation-reason-vs"
+          "valueSet": "http://helsenorge.no/fhir/ValueSet/hn-cancellation-reason-vs"
         }
       },
       {
@@ -378,7 +399,7 @@
           {
             "key": "inv-4",
             "human": "If code is used in a codable consept the system must be used",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "code > '' implies (system > '' )"
           }
@@ -391,7 +412,7 @@
         "max": "1",
         "binding": {
           "strength": "required",
-          "valueSet": "https://fhir.nhn.no/ig/helsenorge/profiles/ValueSet/hn-appointment-ServiceCategory-code-vs"
+          "valueSet": "http://helsenorge.no/fhir/ValueSet/hn-appointment-ServiceCategory-code-vs"
         }
       },
       {
@@ -401,7 +422,7 @@
           {
             "key": "inv-4",
             "human": "If code is used in a codable consept the system must be used",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "code > '' implies (system > '' )"
           }
@@ -419,7 +440,7 @@
           {
             "key": "inv-4",
             "human": "If code is used in a codable consept the system must be used",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "code > '' implies (system > '' )"
           }
@@ -437,7 +458,7 @@
           {
             "key": "inv-4",
             "human": "If code is used in a codable consept the system must be used",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "code > '' implies (system > '' )"
           }
@@ -455,7 +476,7 @@
           {
             "key": "inv-4",
             "human": "If code is used in a codable consept the system must be used",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "code > '' implies (system > '' )"
           }
@@ -472,7 +493,7 @@
         "mustSupport": true,
         "binding": {
           "strength": "required",
-          "valueSet": "https://fhir.nhn.no/ig/helsenorge/profiles/ValueSet/hn-appointment-AppointmentType-code-vs"
+          "valueSet": "http://helsenorge.no/fhir/ValueSet/hn-appointment-AppointmentType-code-vs"
         }
       },
       {
@@ -497,7 +518,7 @@
           {
             "key": "must-be-max-1000-chars",
             "human": "Length MUST be <= 1000",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "$this.length() <= 1000"
           }
@@ -528,7 +549,7 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/kommunikasjonspart-Organization"
+              "http://helsenorge.no/fhir/StructureDefinition/kommunikasjonspart-Organization"
             ]
           }
         ]
@@ -540,7 +561,7 @@
         "short": "Document reference",
         "definition": "DocumentReference resource with supporting documentation for the appointment.",
         "min": 0,
-        "max": "*",
+        "max": "1",
         "type": [
           {
             "code": "Reference",
@@ -557,12 +578,12 @@
         "short": "Flag",
         "definition": "Flag resource with supporting flag information for the appointment.",
         "min": 0,
-        "max": "*",
+        "max": "4",
         "type": [
           {
             "code": "Reference",
             "targetProfile": [
-              "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-Flag"
+              "http://helsenorge.no/fhir/StructureDefinition/hn-basis-Flag"
             ]
           }
         ]
@@ -584,7 +605,7 @@
           {
             "key": "must-be-max-1000-chars",
             "human": "Length MUST be <= 1000",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "$this.length() <= 1000"
           }
@@ -597,14 +618,14 @@
           {
             "key": "appointment-participant-actor-patient-reference-identifier",
             "human": "When actor is a Patient logical reference MUST be used",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "warning",
             "expression": "actor.type = 'Patient' implies actor.identifier.exists()"
           },
           {
             "key": "appointment-participant-actor-patient-reference-reference",
             "human": "When actor is a Patient literal reference (relative, internal or absolute) reference MUST not be used",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "warning",
             "expression": "(actor.type = 'Patient') implies actor.reference.exists().not()"
           }
@@ -617,7 +638,7 @@
           {
             "key": "inv-4",
             "human": "If code is used in a codable consept the system must be used",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-appointment",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "code > '' implies (system > '' )"
           }
@@ -644,7 +665,7 @@
       {
         "id": "Appointment.requestedPeriod",
         "path": "Appointment.requestedPeriod",
-        "max": "0"
+        "max": "1"
       }
     ]
   }

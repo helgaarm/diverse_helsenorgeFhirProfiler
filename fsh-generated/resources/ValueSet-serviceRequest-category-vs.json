@@ -5,7 +5,7 @@
   "id": "serviceRequest-category-vs",
   "title": "ServiceRequest Category Value Set",
   "description": "Kode som klassifiserer tjenesten for søk, sortering og visningsformål. (flere koder vil leggest til senere)",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/ValueSet/serviceRequest-category-vs",
+  "url": "http://helsenorge.no/fhir/ValueSet/serviceRequest-category-vs",
   "version": "1.3.2",
   "experimental": true,
   "date": "2025-10-20T23:59:35+02:00",

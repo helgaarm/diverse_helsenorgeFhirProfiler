@@ -6,7 +6,7 @@
   "id": "hn-schedule-type-cs",
   "title": "Codes that should be used for schedule type",
   "description": "Codes that should be used for schedule type.",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/CodeSystem/hn-schedule-type-cs",
+  "url": "http://helsenorge.no/fhir/CodeSystem/hn-schedule-type-cs",
   "concept": [
     {
       "code": "Lab",

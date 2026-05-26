@@ -55,6 +55,37 @@ Push-Location $validationRoot
 try {
     & $fhirCommand spec R4 --project | Out-Host
     & $fhirCommand init $PackageId $PackageVersion | Out-Host
+
+    $sushiConfig = Join-Path $root "sushi-config.yaml"
+    if (Test-Path $sushiConfig) {
+        $packageJsonPath = Join-Path $validationRoot "package.json"
+        $packageJson = Get-Content -Raw -LiteralPath $packageJsonPath | ConvertFrom-Json
+
+        $dependencies = [ordered]@{}
+        foreach ($property in $packageJson.dependencies.PSObject.Properties) {
+            $dependencies[$property.Name] = $property.Value
+        }
+
+        $inDependencies = $false
+        foreach ($line in Get-Content -LiteralPath $sushiConfig) {
+            if ($line -match '^dependencies:\s*$') {
+                $inDependencies = $true
+                continue
+            }
+
+            if ($inDependencies -and $line -match '^\S') {
+                break
+            }
+
+            if ($inDependencies -and $line -match '^\s{2}([^:#]+):\s*([^\s#]+)') {
+                $dependencies[$Matches[1].Trim()] = $Matches[2].Trim()
+            }
+        }
+
+        $packageJson.dependencies = $dependencies
+        $packageJson | ConvertTo-Json -Depth 10 | Set-Content -LiteralPath $packageJsonPath -Encoding utf8
+    }
+
     & $fhirCommand restore | Out-Host
 
     $validationFailed = $false

@@ -6,7 +6,7 @@
   "id": "no-kodeverk-8268.codesystem",
   "title": "8268 Type identifikator",
   "description": "Angir type identifikator for person og virksomhet.",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/CodeSystem/no-kodeverk-8268.codesystem",
+  "url": "http://helsenorge.no/fhir/CodeSystem/no-kodeverk-8268.codesystem",
   "concept": [
     {
       "code": "ENH",

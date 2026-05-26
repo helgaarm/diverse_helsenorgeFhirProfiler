@@ -10,3 +10,4 @@ Description: "Value set for Helsenorge FHIR appointment status codes."
 * AppointmentStatus#cancelled
 * AppointmentStatus#noshow
 * AppointmentStatus#entered-in-error
+* AppointmentStatus#proposed

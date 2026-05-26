@@ -6,7 +6,7 @@
   "id": "no-kodeverk-8244.codesystem",
   "title": "8244 Avviksmarkør i svarrapportering av medisinske tjenester",
   "description": "Angir svarverdi i forhold til referansegrense",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/CodeSystem/no-kodeverk-8244.codesystem",
+  "url": "http://helsenorge.no/fhir/CodeSystem/no-kodeverk-8244.codesystem",
   "concept": [
     {
       "code": "1",

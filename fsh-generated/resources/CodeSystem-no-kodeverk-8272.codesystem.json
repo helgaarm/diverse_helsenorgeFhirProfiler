@@ -6,7 +6,7 @@
   "id": "no-kodeverk-8272.codesystem",
   "title": "8272 Anbefaling om ny undersøkelse",
   "description": "Anbefaling om ny undersøkelse.",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/CodeSystem/no-kodeverk-8272.codesystem",
+  "url": "http://helsenorge.no/fhir/CodeSystem/no-kodeverk-8272.codesystem",
   "concept": [
     {
       "code": "CYT",

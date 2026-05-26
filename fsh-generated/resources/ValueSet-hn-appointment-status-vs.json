@@ -5,7 +5,7 @@
   "id": "hn-appointment-status-vs",
   "title": "Helsenorge Appointment Status Value Set",
   "description": "Value set for Helsenorge FHIR appointment status codes.",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/ValueSet/hn-appointment-status-vs",
+  "url": "http://helsenorge.no/fhir/ValueSet/hn-appointment-status-vs",
   "version": "2.1.0",
   "experimental": false,
   "compose": {
@@ -27,6 +27,9 @@
           },
           {
             "code": "entered-in-error"
+          },
+          {
+            "code": "proposed"
           }
         ]
       }

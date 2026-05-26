@@ -1,7 +1,7 @@
 {
   "resourceType": "StructureDefinition",
   "id": "hn-basis-Flag",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-Flag",
+  "url": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-Flag",
   "version": "1.0.1",
   "name": "HnBasisFlag",
   "title": "hn-basis-flag",
@@ -35,7 +35,7 @@
           {
             "key": "inv-4",
             "human": "If code is used in a codable consept the system must be used",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-Flag",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-Flag",
             "severity": "error",
             "expression": "code > '' implies (system > '' )"
           }
@@ -46,7 +46,7 @@
         "path": "Flag.code",
         "binding": {
           "strength": "extensible",
-          "valueSet": "https://fhir.nhn.no/ig/helsenorge/profiles/ValueSet/hn-appointment-flag-code-vs"
+          "valueSet": "http://helsenorge.no/fhir/ValueSet/hn-appointment-flag-code-vs"
         }
       },
       {
@@ -56,7 +56,7 @@
           {
             "key": "inv-4",
             "human": "If code is used in a codable consept the system must be used",
-            "source": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-Flag",
+            "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-Flag",
             "severity": "error",
             "expression": "code > '' implies (system > '' )"
           }

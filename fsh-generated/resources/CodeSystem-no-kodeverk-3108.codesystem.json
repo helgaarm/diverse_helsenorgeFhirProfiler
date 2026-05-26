@@ -6,7 +6,7 @@
   "id": "no-kodeverk-3108.codesystem",
   "title": "3108 Reservasjon mot registrering",
   "description": "Opplysning om pasienten holdning til registrering av informasjon i register",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/CodeSystem/no-kodeverk-3108.codesystem",
+  "url": "http://helsenorge.no/fhir/CodeSystem/no-kodeverk-3108.codesystem",
   "identifier": [
     {
       "system": "urn:ietf:rfc:3986",

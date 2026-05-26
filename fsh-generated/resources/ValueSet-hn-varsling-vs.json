@@ -5,7 +5,7 @@
   "id": "hn-varsling-vs",
   "title": "Helsenorge varsling metatag value set",
   "description": "Allowed codes for the Helsenorge varsling metatag.",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/ValueSet/hn-varsling-vs",
+  "url": "http://helsenorge.no/fhir/ValueSet/hn-varsling-vs",
   "version": "1.0.0",
   "compose": {
     "include": [

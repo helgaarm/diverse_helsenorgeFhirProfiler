@@ -4,7 +4,7 @@
   "name": "HnBetingetTilgangsbegrensningVS",
   "id": "hn-tilgangsbegrensning-vs",
   "title": "Helsenorge tilgangsbegrensning ValueSet",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/ValueSet/hn-tilgangsbegrensning-vs",
+  "url": "http://helsenorge.no/fhir/ValueSet/hn-tilgangsbegrensning-vs",
   "version": "1.0.0",
   "compose": {
     "include": [

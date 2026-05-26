@@ -1,7 +1,7 @@
 {
   "resourceType": "StructureDefinition",
   "id": "hn-basis-postponementreason",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-postponementreason",
+  "url": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-postponementreason",
   "version": "1.0.1",
   "name": "HnBasisPostponementReason",
   "title": "hn-basis-postponementreason",
@@ -35,7 +35,7 @@
       {
         "id": "Extension.url",
         "path": "Extension.url",
-        "fixedUri": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-postponementreason"
+        "fixedUri": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-postponementreason"
       },
       {
         "id": "Extension.value[x]",

@@ -1,7 +1,7 @@
 {
   "resourceType": "StructureDefinition",
   "id": "hn-basis-changeConferenceType",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-changeConferenceType",
+  "url": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-changeConferenceType",
   "version": "1.0.1",
   "name": "HnBasisChangeConferenceType",
   "title": "hn-basis-changeConferenceType",
@@ -37,7 +37,7 @@
       {
         "id": "Extension.url",
         "path": "Extension.url",
-        "fixedUri": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/hn-basis-changeConferenceType"
+        "fixedUri": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-changeConferenceType"
       },
       {
         "id": "Extension.value[x]",

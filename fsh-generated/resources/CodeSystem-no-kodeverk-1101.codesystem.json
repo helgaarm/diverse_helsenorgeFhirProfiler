@@ -6,7 +6,7 @@
   "id": "no-kodeverk-1101.codesystem",
   "title": "1101 Ja, nei",
   "description": "Dette kodeverket inneholder koder for å angi svar Ja eller Nei.",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/CodeSystem/no-kodeverk-1101.codesystem",
+  "url": "http://helsenorge.no/fhir/CodeSystem/no-kodeverk-1101.codesystem",
   "concept": [
     {
       "code": "1",

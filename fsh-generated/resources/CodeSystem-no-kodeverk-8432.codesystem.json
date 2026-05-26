@@ -6,7 +6,7 @@
   "id": "no-kodeverk-8432.codesystem",
   "title": "8432 Kontakttype",
   "description": "Dette kodeverket inneholder koder som katogoriserer type kontakter. Gjelder for polikliniske konsultasjoner og dagbehandlinger etc.",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/CodeSystem/no-kodeverk-8432.codesystem",
+  "url": "http://helsenorge.no/fhir/CodeSystem/no-kodeverk-8432.codesystem",
   "concept": [
     {
       "code": "1",

@@ -1,7 +1,7 @@
 {
   "resourceType": "StructureDefinition",
   "id": "tba-organizationcoverage",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/tba-organizationcoverage",
+  "url": "http://helsenorge.no/fhir/StructureDefinition/tba-organizationcoverage",
   "version": "1.0.1",
   "name": "TbaOrganizationcoverage",
   "status": "draft",
@@ -34,7 +34,7 @@
       {
         "id": "Extension.url",
         "path": "Extension.url",
-        "fixedUri": "https://fhir.nhn.no/ig/helsenorge/profiles/StructureDefinition/tba-organizationcoverage"
+        "fixedUri": "http://helsenorge.no/fhir/StructureDefinition/tba-organizationcoverage"
       },
       {
         "id": "Extension.value[x]",

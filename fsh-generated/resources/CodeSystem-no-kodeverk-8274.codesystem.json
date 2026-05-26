@@ -6,7 +6,7 @@
   "id": "no-kodeverk-8274.codesystem",
   "title": "8274 Anbefaling om supplerende undersøkelser",
   "description": "Om rekvirenten gir tjenesteyter tillatelse til å utføre ytterligere undersøkelser eller andre tiltak basert på resultater og medisinskfaglig skjønn.",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/CodeSystem/no-kodeverk-8274.codesystem",
+  "url": "http://helsenorge.no/fhir/CodeSystem/no-kodeverk-8274.codesystem",
   "identifier": [
     {
       "system": "urn:ietf:rfc:3986",

@@ -6,7 +6,7 @@
   "id": "no-kodeverk-8271.codesystem",
   "title": "8271 Resistens",
   "description": "Svarverdier til bruk i resistensbestemmelser (SIR)",
-  "url": "https://fhir.nhn.no/ig/helsenorge/profiles/CodeSystem/no-kodeverk-8271.codesystem",
+  "url": "http://helsenorge.no/fhir/CodeSystem/no-kodeverk-8271.codesystem",
   "concept": [
     {
       "code": "S",
