@@ -87,7 +87,7 @@ Description: "Base profile for Helsenorge Appointment information. Defined by He
     flag 0..4
 * supportingInformation[kommunikasjonspart] only Reference(KommunikasjonspartOrganization or Organization)
 * supportingInformation[kommunikasjonspart] ^short = "Kommunikasjonspart"
-* supportingInformation[kommunikasjonspart] ^definition = "Kommunikasjonspart organization used to transfer HER-id level 2 for the communication partner when serviceCategory is not 7."
+* supportingInformation[kommunikasjonspart] ^definition = "Kommunikasjonspart organization used to transfer HER-id level 2 for the communication partner when serviceCategory is not 7. Else base organization is used tranfering both level 1 and level 2."
 * supportingInformation[documentReference] only Reference(NoBasisDocumentReference)
 * supportingInformation[documentReference] ^short = "Document reference"
 * supportingInformation[documentReference] ^definition = "DocumentReference resource with supporting documentation for the appointment."

@@ -28,7 +28,7 @@
           },
           {
             "key": "contained-location-must-have-managingorganization",
-            "human": "Contained Location must have managingOrganization when serviceCategory is 27 or 30",
+            "human": "When serviceCategory is 27 or 30, every contained Location must have managingOrganization.",
             "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "serviceCategory.coding.where(code = '27' or code = '30').empty() or      contained.ofType(Location).all(managingOrganization.exists())"
@@ -70,7 +70,7 @@
           },
           {
             "key": "serviceCategory-location-type",
-            "human": "If serviceCategory is 7 and virtualService is not present, all contained Location resources must have type PTRES or OF. If serviceCategory is 27 or 30, all contained Location resources must have type HU or HOSP, and at least one of each must be present.",
+            "human": "If serviceCategory is 7 and virtualService is not present, every contained Location must have type PTRES or OF. If serviceCategory is 27 or 30, every contained Location must have type HU or HOSP, and at least one HU and one HOSP Location must be present.",
             "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "(serviceCategory.coding.where(code='7').empty() or extension('http://helsenorge.no/fhir/StructureDefinition/hn-basis-virtual-service').exists() or contained.ofType(Location).all(type.coding.where(system='http://terminology.hl7.org/CodeSystem/v3-RoleCode' and (code='PTRES' or code='OF')).exists())) and (serviceCategory.coding.where(code='27' or code='30').empty() or (contained.ofType(Location).all(type.coding.where(system='http://terminology.hl7.org/CodeSystem/v3-RoleCode' and (code='HU' or code='HOSP')).exists()) and contained.ofType(Location).where(type.coding.where(system='http://terminology.hl7.org/CodeSystem/v3-RoleCode' and code='HU').exists()).exists() and contained.ofType(Location).where(type.coding.where(system='http://terminology.hl7.org/CodeSystem/v3-RoleCode' and code='HOSP').exists()).exists()))"
@@ -112,17 +112,17 @@
           },
           {
             "key": "supportinginformation-organization-partof",
-            "human": "When supportingInformation references an Organization, the referenced Organization must use HER-id level 2 identifier system and must have partOf referencing an Organization that uses HER-id level 1 identifier system.",
+            "human": "Every Organization referenced from supportingInformation must have only HER-id level 2 identifiers and must have partOf referencing only Organizations with HER-id level 1 identifiers.",
             "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
             "expression": "supportingInformation.resolve().ofType(Organization).all(identifier.exists() and identifier.all(system = 'urn:oid:2.16.578.1.12.4.1.4.102') and partOf.exists() and partOf.resolve().ofType(Organization).exists() and partOf.resolve().ofType(Organization).all(identifier.exists() and identifier.all(system = 'urn:oid:2.16.578.1.12.4.1.4.101')))"
           },
           {
             "key": "serviceCategory-7-requires-kommunikasjonspart-organization",
-            "human": "When serviceCategory is 7, supportingInformation[kommunikasjonspart] must reference an Organization.",
+            "human": "When serviceCategory is 7, supportingInformation[kommunikasjonspart] must reference an Organization using HER-id level 2 identifier system.",
             "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "error",
-            "expression": "serviceCategory.coding.where(code = '7').empty() or supportingInformation.resolve().ofType(Organization).exists()"
+            "expression": "serviceCategory.coding.where(code = '7').empty() or supportingInformation.resolve().ofType(Organization).where(identifier.where(system = 'urn:oid:2.16.578.1.12.4.1.4.102').exists()).exists()"
           },
           {
             "key": "virtualservice-or-location-required",
@@ -550,7 +550,7 @@
         "path": "Appointment.supportingInformation",
         "sliceName": "kommunikasjonspart",
         "short": "Kommunikasjonspart",
-        "definition": "Kommunikasjonspart organization used to transfer HER-id level 2 for the communication partner when serviceCategory is not 7.",
+        "definition": "Kommunikasjonspart organization used to transfer HER-id level 2 for the communication partner when serviceCategory is not 7. Else base organization is used tranfering both level 1 and level 2.",
         "min": 1,
         "max": "1",
         "type": [
@@ -633,7 +633,7 @@
           },
           {
             "key": "appointment-participant-actor-patient-reference-reference",
-            "human": "When actor is a Patient literal reference (relative, internal or absolute) reference MUST not be used",
+            "human": "When actor is a Patient, literal reference (relative, internal or absolute) MUST not be used",
             "source": "http://helsenorge.no/fhir/StructureDefinition/hn-basis-appointment",
             "severity": "warning",
             "expression": "(actor.type = 'Patient') implies actor.reference.exists().not()"
